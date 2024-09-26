@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Joshna Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1F0A28; /* Dark purple background */
+            color: white; /* Default text color */
+        }
+        html {
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+        nav {
+            margin-bottom: 0px; /* Reduce space below the nav */
+        }
+        section {
+            margin-top: 0px; /* Adjust space above sections */
+        }
+        h2 {
+            margin-top: 0px; /* Reduce space above h2 headings */
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .link {
+            margin-right: 20px;
+        }
+        .hire-me {
+            background-color: #6c63ff; /* Button color */
+            color: white; /* Button text color */
+            border: none;
+            border-radius: 5px; /* Slightly rounded corners */
+            cursor: pointer;
+            padding: 10px 15px; /* Padding for the button */
+            font-size: 1rem; /* Font size */
+            transition: 0.2s linear;
+        }
+        .hire-me:hover {
+            background-color: #5a52e6; /* Darker color on hover */
+        }
+        .education-section, .skills-section {
+            padding: 15px; /* Adjust padding if necessary */
+            transition: background-color 0.3s;
+        }
+        .education-section:hover, .skills-section:hover {
+            background-color: #c77dff; /* Darker purple color on hover */
+        }
+        h3 {
+            display: flex;
+            align-items: center;
+        }
+        h3 i {
+            margin-right: 10px;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .skill-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .skills-section {
+            width: 48%; /* Adjust width for two columns */
+            margin-bottom: 20px; /* Space between rows */
+            border: 2px solid #6c63ff; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+            transition: box-shadow 0.3s;
+            padding: 15px; /* Add padding */
+        }
+        .skills-section:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+        }
+        .projects-certifications-container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space out the sections */
+            margin-top: 20px; /* Space above */
+        }
+        .projects-container, .certifications-container {
+            width: 48%; /* Each section takes up nearly half of the container */
+        }
+        .project, .certification {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #6c63ff; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+        }
+        .project h3, .certification h3 {
+            margin-bottom: 10px; /* Space between title and content */
+        }
+        .project ul, .certification ul {
+            margin: 10px 0 0 20px; /* Margin for bullet points */
+        }
+        .social-links {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+        }
+        .button-container {
+            display: flex; /* Use flexbox for horizontal layout */
+            gap: 10px; /* Space between buttons */
+        }
+        .download-cv {
+            background-color: #100f11; /* Button color */
+            color: rgb(236, 220, 220); /* Button text color */
+            border: none;
+            border-radius: 5px; /* Slightly rounded corners */
+            cursor: pointer;
+            padding: 12px 15px; /* Increased padding for a bigger button */
+            transition: 0.2s linear;
+            flex: 0.2; /* Prevent the button from growing */
+            text-align: center; /* Center the text */
+            display: flex; /* Make the button a flex container */
+            justify-content: center; /* Center text horizontally */
+            align-items: center; /* Center text vertically */
+            font-size: 1.1rem; /* Increased font size */
+        }
+        .download-cv:hover {
+            background-color: transparent; /* Change background on hover */
+            border: 1px solid #b7a1d8; /* Border on hover */
+            color: #b7a1d8; /* Change text color on hover */
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #1F0A28;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #6c63ff; /* Border color */
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 10px; /* Rounded corners */
+            color: white;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal input, .modal textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #6c63ff;
+            border-radius: 5px;
+            background-color: #1F0A28;
+            color: white;
+        }
+        .modal button {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .modal button:hover {
+            background-color: #5a52e6;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                Joshna Rangala
+            </div>
+            <div class="links">
+                <div class="link"><a href="#graduation">Education</a></div>
+                <div class="link"><a href="#skills">Skills</a></div>
+                <div class="link"><a href="#projects-certifications">Projects</a></div>
+                <div class="link"><a href="#contact">Certifications</a></div>
+                <div class="link"><a href="#contact">Contact</a></div>
+                <button class="hire-me" onclick="openModal()">Hire Me</button>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+    </nav>
+    <section>
+        <div class="main-container">
+            <div class="image" data-aos="zoom-out" data-aos-duration="3000">
+                <img src="main.jpg" alt="Profile Picture">
+            </div>
+            <div class="content">
+                <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">I'm <span>Joshna</span></h1>
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Computer Science Engineering graduate with a passion for technology and problem-solving. Proficient in DevOps and familiar with AWS and Java. Eager to learn and contribute in a dynamic team environment!</p>
+                <div class="social-links">
+                    <div class="button-container" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400">
+                        <button class="download-cv" onclick="window.location.href='resume.pdf'">Download CV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2><i class="fa-solid fa-graduation-cap"></i> My Education</h2>
+    </section>
+
+    <section id="graduation" class="education-section">
+        <h3><i class="fa-solid fa-user-graduate"></i> B.Tech</h3>
+        <p> Gayatri Vidya Parishad College of Engineering for Women, Visakhapatnam</p>
+        <p> Computer Science Engineering</p>
+        <p> 2019 - 2023</p>
+    </section>
+
+    <section id="intermediate" class="education-section">
+        <h3><i class="fa-solid fa-user-graduate"></i> Intermediate</h3>
+        <p> Sri Chaitanya Junior College, Visakhapatnam</p>
+        <p> 2017 - 2019</p>
+    </section>
+
+    <section id="secondary" class="education-section">
+        <h3><i class="fa-solid fa-user-graduate"></i> 10th Standard</h3>
+        <p>St. Ann’s Convent School, Pathapatnam</p>
+        <p>2016 - 2017</p>
+    </section>
+
+    <section id="skills">
+        <h2><i class="fa-solid fa-tools"></i> My Skills</h2>
+        <div class="skills-container">
+            <div class="skills-section">
+                <h3><i class="fa-solid fa-laptop-code"></i> Operating Systems</h3>
+                <p>Familiar with Linux environments and command-line interfaces.</p>
+            </div>
+            <div class="skills-section">
+                <h3><i class="fa-solid fa-cluster"></i> Cluster Technologies</h3>
+                <p>Basic knowledge of Docker for containerization, understanding of Kubernetes for orchestration, and exposure to EKS for managed Kubernetes services.</p>
+            </div>
+            <div class="skills-section">
+                <h3><i class="fa-solid fa-code-branch"></i> Version Control</h3>
+                <p>Proficient with Git for version control and experience using GitHub for collaboration and code hosting.</p>
+            </div>
+            <div class="skills-section">
+                <h3><i class="fa-solid fa-cloud"></i> Automation Tools</h3>
+                <p>Familiar with Ansible for automation tasks, basic knowledge of Terraform for infrastructure as code, and understanding of Jenkins for CI/CD processes.</p>
+            </div>
+            <div class="skills-section">
+                <h3><i class="fa-solid fa-cloud"></i> Amazon Web Services</h3>
+                <p>Basic understanding of AWS services like EC2 and S3, familiar with RDS for database management, and introductory knowledge of IAM for security management.</p>
+            </div>
+            <div class="skills-section">
+                <h3><i class="fa-solid fa-code"></i> Programming Languages</h3>
+                <p>Knowledgeable in Java and eager to learn more languages.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects-certifications">
+        <div class="projects-certifications-container">
+            <div class="projects-container">
+                <h2><i class="fa-solid fa-folder-open"></i>My Projects</h2>
+                <div class="project">
+                    <h3>Learning Management System (LMS)</h3>
+                    <ul>
+                        <li>Set up and configured infrastructure for DEV, QA, and PROD environments.</li>
+                        <li>Managed cloud-based resources including virtual machines and networking components.</li>
+                        <li>Automated infrastructure provisioning using Terraform.</li>
+                        <li>Implemented a CI/CD pipeline with Jenkins.</li>
+                    </ul>
+                </div>
+                <div class="project">
+                    <h3>Customer and Product Segmentation in Retailing using Machine Learning techniques</h3>
+                    <ul>
+                        <li>Conducted data cleaning, preprocessing, and feature engineering to prepare datasets.</li>
+                        <li>Performed RFM analysis to gain insights into customer behavior.</li>
+                        <li>Employed various clustering techniques including K-means, DBSCAN, and Hierarchical clustering for model selection.</li>
+                        <li>Utilized K-means++ clustering for product segmentation.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="certifications-container">
+                <h2><i class="fa-solid fa-certificate"></i>My Certifications</h2>
+                <div class="certification">
+                    <h3>AWS Certified Practitioner Essentials-05/2022</h3>
+                </div>
+                <div class="certification">
+                    <h3>DevOps and AWS certification at Digital Lync -2024</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            <strong>Email:</strong>
+            <a href="mailto:rangalajoshna@gmail.com" style="color: white;">rangalajoshna@gmail.com</a>
+        </p>
+        <p>
+            <i class="fa-solid fa-mobile-alt"></i>
+            <strong>Mobile:</strong> +91 7675910130
+        </p>
+    </section>
+
+    <!-- Modal for Hire Me -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Contact Me</h2>
+            <form action="mailto:rangalajoshna@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({offset: 0});
+
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                closeModal();
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

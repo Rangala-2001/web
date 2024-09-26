@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #1F0A28; /* Dark purple background */
+    color: white; /* Default text color */
+}
+
+nav {
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+    top: 0;
+    background-color: #2E1A47; /* Header background color */
+    z-index: 100;
+}
+
+.nav-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #b7a1d8; /* Light lavender for logo highlight */
+    text-shadow: 0 0 10px #b7a1d8;
+}
+
+.hamburg,
+.cancel {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: white;
+    display: none;
+    font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+}
+
+.nav-container .links {
+    display: flex;
+}
+
+.nav-container .links a {
+    position: relative;
+    font-size: 1.2rem;
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.3s linear;
+}
+
+.nav-container .links a::before {
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #b7a1d8; /* Light lavender */
+    transition: 0.2s linear;
+}
+
+.nav-container .links a:hover::before {
+    width: 100%;
+}
+
+.nav-container .links a:hover {
+    color: #b7a1d8; /* Light lavender on hover */
+}
+
+section {
+    padding: 60px 20px; /* Add padding for spacing */
+    background-color: #2E1A47; /* Dark purple background for sections */
+    color: white; /* White text */
+    scroll-margin-top: 60px; /* Adjust scrolling position */
+}
+
+h2 {
+    font-size: 2rem; /* Adjust heading size */
+    margin-bottom: 20px;
+    color: #b7a1d8; /* Light lavender for headings */
+}
+
+.main-container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main-container .image {
+    width: 400px; /* Increased width for profile picture */
+    height: 400px; /* Increased height for profile picture */
+    border-radius: 15%; /* Slightly rounded corners */
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(183, 161, 216, 0.5); /* Shadow with transparency */
+}
+
+.main-container .image img {
+    width: 100%; /* Fill the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image covers the entire area */
+}
+
+.main-container .content {
+    color: white;
+    width: 40%;
+    min-height: 100px;
+}
+
+.content h1 {
+    font-size: clamp(1rem, 1rem + 5vw, 2rem);
+}
+
+.content h1 span {
+    color: #b7a1d8; /* Light lavender for highlighted text */
+    text-shadow: 0 0 10px #b7a1d8;
+}
+
+.content .typewriter {
+    font-size: clamp(1rem, 1rem + 5vw, 2.5rem);
+    font-weight: 600;
+}
+
+.content p {
+    font-size: clamp(0.4rem, 0.2rem + 9vw, 1rem);
+    margin: 10px 0;
+}
+
+.social-links i {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: transparent;
+    border: 0.2rem solid #b7a1d8; /* Light lavender border */
+    border-radius: 50%;
+    color: #b7a1d8; /* Light lavender */
+    margin: 5px 15px;
+    font-size: 1.5rem;
+    transition: 0.2s linear;
+}
+
+.social-links i:hover {
+    scale: 1.3;
+    color: black; /* Text color on hover */
+    background-color: #b7a1d8; /* Background color on hover */
+    filter: drop-shadow(0 0 10px #b7a1d8);
+}
+
+.content button {
+    width: 15%; /* Reduced width */
+    height: 4vh; /* Height remains the same */
+    margin: 20px; /* Adjusted margin */
+    background-color: transparent; /* Start with a transparent background */
+    color: #b7a1d8; /* Text color */
+    border: 2px solid #b7a1d8; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    overflow: hidden; /* Hide the pseudo-element overflow */
+    transition: color 0.3s;
+    font-size: 100%; /* Adjusted font size */
+    font-weight: 600; /* Slightly lighter font weight */
+}
+
+
+
+.content button::before {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute; /* Position it absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    width: 100%; /* Large enough to cover the button */
+    height: 100%; /* Large enough to cover the button */
+    background: rgba(183, 161, 216, 0.7); /* Light purple background */
+    border-radius: 50%; /* Make it circular */
+    transform: translate(-50%, -50%) scale(0); /* Start scaled down */
+    transition: transform 0.6s; /* Transition for scaling */
+    z-index: 0; /* Behind the text */
+}
+
+.content button:hover {
+    color: white; /* Change text color on hover */
+}
+
+.content button:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* Scale up on hover */
+}
+
+@media (max-width: 884px) {
+    nav .logo {
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .nav-container .links {
+        display: none;
+    }
+
+    .hamburg,
+    .cancel {
+        display: block;
+    }
+
+    .main-container .content {
+        width: 80%;
+    }
+
+    .social-links i {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .main-container .image {
+        z-index: -1;
+        width: 70%; /* Adjusted for larger size */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+@media (max-width: 440px) {
+    .main-container .image {
+        width: 60%; /* Adjusted for larger size */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 0px;
+    }
+
+    .main-container .content {
+        width: 80%;
+    }
+
+    .main-container button {
+        margin-top: 15px;
+    }
+}
